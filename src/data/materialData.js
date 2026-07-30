@@ -1,65 +1,99 @@
-// 2026년 6월 4일 기준 '전해조과_PAT_자재' 엑셀 원본 데이터 (최초 1회 시딩용)
-// PART(제조사)별 5개 카테고리(전해조/MEMBRANE/FRAME_GK/HOSE/IN_OUT_GK)의 종류/수량 스냅샷입니다.
-// 이후 데이터는 Firestore에서 직접 관리되며, 이 파일은 최초 업로드 시에만 사용됩니다.
+// '2026년 6월 전해조 PART별 주요자재 현황' 신규 레이아웃(안) 기준 최초 시딩 데이터
+// PART(제조사)별 5개 카테고리(전해조/MEMBRANE/FRAME_GK/HOSE/IN_OUT_GK)의
+// 종류(type) / 규격(subType, 있는 경우만) / 단위(unit) 뼈대만 담고 있습니다.
+// 수량(quantity)과 비고(note)는 실제 현재값을 앱에서 직접 입력해야 하므로 비워둡니다.
+// 이후 데이터는 Firestore에서 직접 관리되며, 이 파일은 최초/재설치 시에만 사용됩니다.
 
 export const materialData = {
   "CEC": {
     "전해조": [
       {
         "type": "N-BiTAC",
-        "quantity": "총:84(SPARE CELL)\n가:N.-84개.  불:0"
+        "subType": "",
+        "unit": "개"
       },
       {
         "type": "Nx-BiTAC",
-        "quantity": "Nx-BiTAC SP-112 (양-90 불-22)"
+        "subType": "",
+        "unit": "개"
       },
       {
         "type": "E-BiTAC",
-        "quantity": "E-BiTAC SP-50"
+        "subType": "",
+        "unit": "개"
       }
     ],
     "MEMBRANE": [
       {
         "type": "F-9010",
-        "quantity": "483 SH"
+        "subType": "",
+        "unit": "SH"
       },
       {
-        "type": "2030NX\nN-2050\nF-9060",
-        "quantity": "0 SH\n62 SH\n0 SH"
+        "type": "2030NX",
+        "subType": "",
+        "unit": "SH"
+      },
+      {
+        "type": "N-2050",
+        "subType": "",
+        "unit": "SH"
+      },
+      {
+        "type": "F-9060",
+        "subType": "",
+        "unit": "SH"
       },
       {
         "type": "N-2060",
-        "quantity": "0 SH"
+        "subType": "",
+        "unit": "SH"
       }
     ],
     "FRAME_GK": [
       {
         "type": "ANODE",
-        "quantity": "외산-332"
+        "subType": "",
+        "unit": "개"
       },
       {
         "type": "CATHODE",
-        "quantity": "외산-332"
+        "subType": "",
+        "unit": "개"
       }
     ],
     "HOSE": [
       {
         "type": "IN",
-        "quantity": "N-9.\nNX-430"
+        "subType": "N-BiTAC",
+        "unit": "개"
+      },
+      {
+        "type": "IN",
+        "subType": "Nx-BiTAC",
+        "unit": "개"
       },
       {
         "type": "OUT",
-        "quantity": "외산:276\n국산:150"
+        "subType": "외산",
+        "unit": "개"
+      },
+      {
+        "type": "OUT",
+        "subType": "국산",
+        "unit": "개"
       }
     ],
     "IN_OUT_GK": [
       {
         "type": "OUT(4각)\nEPDM",
-        "quantity": "2,800개"
+        "subType": "",
+        "unit": "개"
       },
       {
         "type": "국 산",
-        "quantity": "910개"
+        "subType": "",
+        "unit": "개"
       }
     ]
   },
@@ -67,67 +101,111 @@ export const materialData = {
     "전해조": [
       {
         "type": "ANODE",
-        "quantity": "G6+: 39(조립포함) 현가-39. 불-0\nG-6: 166(조립포함)  현가-159 불-6 폐기-1"
+        "subType": "G-6+(조립포함)",
+        "unit": "개"
+      },
+      {
+        "type": "ANODE",
+        "subType": "G-6(조립포함)",
+        "unit": "개"
       },
       {
         "type": "CATHODE",
-        "quantity": "G6+: 39(조립포함) 현가-38. 불-1\nG-6: 166(조립포함)    현가-164   불-2"
+        "subType": "G-6+(조립포함)",
+        "unit": "개"
+      },
+      {
+        "type": "CATHODE",
+        "subType": "G-6(조립포함)",
+        "unit": "개"
       },
       {
         "type": "*조립CELL",
-        "quantity": "G6+: 5개 (N-2060)\nG-6: 2개국산전극 (N-2060)"
+        "subType": "G-6+(조립포함)",
+        "unit": "개"
+      },
+      {
+        "type": "*조립CELL",
+        "subType": "G-6(조립포함)",
+        "unit": "개"
       }
     ],
     "MEMBRANE": [
       {
-        "type": "N-2050WX\nN-2060",
-        "quantity": "G-6: 0 SH\nG-6: 368 SH"
+        "type": "N-2050WX",
+        "subType": "G-2",
+        "unit": "SH"
+      },
+      {
+        "type": "N-2050WX",
+        "subType": "G-6",
+        "unit": "SH"
+      },
+      {
+        "type": "N-2060",
+        "subType": "G-2",
+        "unit": "SH"
+      },
+      {
+        "type": "N-2060",
+        "subType": "G-6",
+        "unit": "SH"
       },
       {
         "type": "2030NX",
-        "quantity": "G-2: 0 SH\nG-6: 0 SH"
+        "subType": "G-6",
+        "unit": "SH"
       },
       {
         "type": "F-9060",
-        "quantity": "G-6: 0 SH"
+        "subType": "G-6",
+        "unit": "SH"
       }
     ],
     "FRAME_GK": [
       {
-        "type": "G6+",
-        "quantity": "94개"
+        "type": "G-6+",
+        "subType": "",
+        "unit": "개"
       },
       {
-        "type": "G-6",
-        "quantity": "118 개"
+        "type": "G-6+",
+        "subType": "",
+        "unit": "개"
       }
     ],
     "HOSE": [
       {
         "type": "IN",
-        "quantity": "1500:100"
+        "subType": "",
+        "unit": "개"
       },
       {
-        "type": "G6+",
-        "quantity": 169
+        "type": "OUT",
+        "subType": "G-6+",
+        "unit": "개"
       },
       {
-        "type": "OUT G-6",
-        "quantity": "양:262\n음:대-126 소-64"
+        "type": "OUT",
+        "subType": "G-6",
+        "unit": "개"
       }
     ],
     "IN_OUT_GK": [
       {
-        "type": "GORE-\nTEX",
-        "quantity": "총: 264롤"
+        "type": "GORE-TEX",
+        "subType": "",
+        "unit": "ROLL"
       },
       {
-        "type": "1팀 G6+",
-        "quantity": "50롤"
+        "type": "CA-2",
+        "subType": "G-6+",
+        "unit": "ROLL"
       },
       {
-        "type": "2팀 G6",
-        "quantity": "214롤"
+        "type": "CA-3",
+        "subType": "G-6",
+        "unit": "ROLL"
       }
     ]
   },
@@ -135,47 +213,111 @@ export const materialData = {
     "전해조": [
       {
         "type": "BIPOLAR",
-        "quantity": "총:186개 ( CA5: 94. CA4: 92. )\n양호:181 (PDT- 포함. SP-)\n수리불가:1 , 폐기:4\n\nCA-6 총 21개 (PDT 포함)\n(음극 수리 1개 , 사용 불가 4개)"
+        "subType": "CA-4",
+        "unit": "개"
+      },
+      {
+        "type": "BIPOLAR",
+        "subType": "CA-5",
+        "unit": "개"
+      },
+      {
+        "type": "BIPOLAR",
+        "subType": "CA-6",
+        "unit": "개"
       }
     ],
     "MEMBRANE": [
       {
-        "type": "F-7001E\n\nF-9060\nF-7001",
-        "quantity": "114 SH (1팀)\n0 SH (2팀)\n3 SH (1팀)\n48 SH (3팀)"
+        "type": "F-7001E",
+        "subType": "",
+        "unit": "SH"
       },
       {
-        "type": "N-2050\n\nN-2060",
-        "quantity": "1 SH (1팀)\n\n1 SH (1팀)\n85 SH (2팀)"
+        "type": "F-9060",
+        "subType": "",
+        "unit": "SH"
+      },
+      {
+        "type": "F-7001",
+        "subType": "",
+        "unit": "SH"
+      },
+      {
+        "type": "N-2050",
+        "subType": "",
+        "unit": "SH"
+      },
+      {
+        "type": "N-2060",
+        "subType": "",
+        "unit": "SH"
       }
     ],
     "FRAME_GK": [
       {
         "type": "ANODE",
-        "quantity": "※ 599합 : 760 , 925합 : 90\nCA-4  915: 499 , 925: 41\nCA-5  915: 65 , 925: 20\nCA-6  915: 35 ,  925: 29"
+        "subType": "915",
+        "unit": "개"
+      },
+      {
+        "type": "ANODE",
+        "subType": "925",
+        "unit": "개"
       },
       {
         "type": "CATHODE",
-        "quantity": "※ 125합 : 593 , 140합 : 44\nCA-4  125: 491 , 140: 20\nCA-5  125: 67 , 140: 9\nCA-6  125: 35 ,  140: 15"
+        "subType": "125",
+        "unit": "개"
+      },
+      {
+        "type": "CATHODE",
+        "subType": "140",
+        "unit": "개"
       }
     ],
     "HOSE": [
       {
         "type": "IN",
-        "quantity": "CA-4 : 44\nCA-5 : 43\n 국산 : 119\nCA-6 : 160"
+        "subType": "외산",
+        "unit": "개"
+      },
+      {
+        "type": "IN",
+        "subType": "국산",
+        "unit": "개"
       },
       {
         "type": "OUT",
-        "quantity": "CA-4 : 41\n 국산 : 23\nCA-5 : 66\n 국산 : 79\nCA-6 : 160"
+        "subType": "외산",
+        "unit": "개"
+      },
+      {
+        "type": "OUT",
+        "subType": "국산",
+        "unit": "개"
       }
     ],
     "IN_OUT_GK": [
       {
         "type": "IN",
-        "quantity": "총:4,762개\n(EP : 3,853 TF : 864)\nCA-6 TF : 45"
+        "subType": "EP",
+        "unit": "개"
+      },
+      {
+        "type": "IN",
+        "subType": "TF",
+        "unit": "개"
       },
       {
         "type": "OUT",
-        "quantity": "총:4,521개\n(EP : 3,613  TF : 860)\nCA-6 TF : 48"
+        "subType": "EP",
+        "unit": "개"
+      },
+      {
+        "type": "OUT",
+        "subType": "TF",
+        "unit": "개"
       }
     ]
   },
@@ -183,68 +325,51 @@ export const materialData = {
     "전해조": [
       {
         "type": "ANODE",
-        "quantity": "총-7셀(B/L포함) \nNEW: 4 CELL분\nB/L : 2    대기: 4"
+        "subType": "",
+        "unit": "BL"
       },
       {
         "type": "CATHODE",
-        "quantity": "총-6셀(B/L포함)\nNEW: 3 CELL분\nB/L : 2     대기: 4"
+        "subType": "",
+        "unit": "BL"
       }
     ],
     "MEMBRANE": [
       {
         "type": "F-8080",
-        "quantity": "6 CELL"
+        "subType": "",
+        "unit": "CELL"
       },
       {
-        "type": "F-795\nN-2030",
-        "quantity": ""
+        "type": "F-795",
+        "subType": "",
+        "unit": "CELL"
+      },
+      {
+        "type": "N-2030",
+        "subType": "",
+        "unit": "CELL"
       }
     ],
     "FRAME_GK": [
       {
         "type": "ANODE",
-        "quantity": "총-6셀(B/L제외)"
+        "subType": "",
+        "unit": "CELL"
       },
       {
         "type": "CATHODE",
-        "quantity": "총-6셀(B/L제외)"
+        "subType": "",
+        "unit": "CELL"
       }
     ],
     "HOSE": [
       {
         "type": "IN",
-        "quantity": "2개"
+        "subType": "",
+        "unit": "개"
       }
     ],
     "IN_OUT_GK": []
   }
-};
-
-// 정비 / 반입 / 반출 작업 로그 (자유 텍스트, 원본 엑셀의 줄바꿈 형태를 그대로 보존)
-export const materialLogData = {
-  "정비": [
-    "EL-400 B #47교체 G6+                                                   4/30",
-    "CA-5 EL-1500 C 정기교체                                         5/11 ~13",
-    "FT915:160 , FT925:5 , SNT125:161 , NG140:2",
-    "Out Hose:2 MEMBRANE (2060) : 160",
-    "CA-6 EL-2500 A #51 부분교체                                          5/12",
-    "In Let O-Ring 3EA , Cell 1EA , Memb' 2EA (F-7001)",
-    "CA-5 EL-1500 A #1 부분교체                                            5/12",
-    "Cell 1EA , Memb:6장(N2060) , Gasket FT925",
-    "CA-5 EL-1500 C #1 부분교체                                            5/14",
-    "Cell 1EA , Memb:2장(N2060) ,Out Hose 1EA",
-    "CA-5 EL-1500 C #1 부분교체                                      5/15~16",
-    "Cell 1EA , Memb:3장(N2060) ,In/Out Hose 각6EA",
-    "Spare Gasket 부착 FT915:1 , FT925:2 , SNT125:1 , NG140:2",
-    "CA-4 EL-500 E #65 부분교체                                            5/18",
-    "Cell 1EA , Memb:4장(F7001E) , Out Let  O-Ring 4EA",
-    "CA-4 EL-500 B Out Hose 1EA 교체                                  5/19",
-    "AGC E-537 교체 (E-506 + 2회차 , - New 사용)                   5/20"
-  ],
-  "반입": [
-    "UHDE Recoating Pan (158 Set)                                                   6/2"
-  ],
-  "반출": [
-    "AKC 폐전극 반출                                                             5/18"
-  ]
 };
