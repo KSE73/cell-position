@@ -35,7 +35,7 @@ async function main() {
     rows.forEach((row) => {
       const { id, ...fields } = row;
       const ref = doc(db, 'cellGroups', groupId, 'electrodes', id);
-      batch.set(ref, fields);
+      batch.set(ref, { ...fields, updatedBy: '초기 데이터 시딩' });
     });
     await batch.commit();
     total += rows.length;
