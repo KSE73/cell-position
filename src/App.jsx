@@ -3,6 +3,7 @@ import * as XLSX from 'xlsx';
 import {
   GROUP_IDS, loadAllElectrodes, loadAllHistory, saveElectrodeWithHistory,
 } from './firebase.js';
+import MaterialPage from './MaterialPage.jsx';
 
 const GROUP_DOTS = { 'EL-500A': '#E5620E', 'EL-500B': '#2FA36B', 'EL-500C': '#3B82C4', 'EL-500D': '#A855C4', 'EL-500E': '#E8A317' };
 const FIELD_LABELS = { electrodeNo: '전극 No.', installDate: '설치일자', type: 'Type', membraneCode: "MEMB'", membraneInstallDate: '멤브레인 설치일', membraneNo: "MEM' NO", ioType: 'I/O 구분' };
@@ -294,6 +295,10 @@ export default function App() {
             );
           })}
           <div style={{ padding: '20px 10px 8px', fontSize: 12, fontWeight: 700, color: '#A6A6AE', letterSpacing: '.04em' }}>이력 / 관리</div>
+          <div onClick={() => setView('material')} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 12px', borderRadius: 10, cursor: 'pointer', marginBottom: 2, background: view === 'material' ? '#F2F2F5' : 'transparent' }}>
+            <div style={{ width: 8, height: 8, borderRadius: 2, background: '#7C7C86' }} />
+            <div style={{ fontSize: 14, fontWeight: 700, color: view === 'material' ? '#1B1B1F' : '#4A4A52' }}>PART별 자재 관리</div>
+          </div>
           <div onClick={() => setView('history')} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 12px', borderRadius: 10, cursor: 'pointer', marginBottom: 2, background: view === 'history' ? '#F2F2F5' : 'transparent' }}>
             <div style={{ width: 8, height: 8, borderRadius: 2, background: '#7C7C86' }} />
             <div style={{ fontSize: 14, fontWeight: 700, color: view === 'history' ? '#1B1B1F' : '#4A4A52' }}>전체 수정 이력</div>
@@ -424,6 +429,14 @@ export default function App() {
                 {rows.length === 0 && <div style={{ padding: 60, textAlign: 'center', color: '#A6A6AE', fontSize: 14 }}>조건에 맞는 전극이 없습니다.</div>}
               </div>
             </div>
+          )}
+
+          {view === 'material' && (
+            <MaterialPage
+              user={user}
+              onRequireIdentity={() => setIdentityOpen(true)}
+              showToast={showToast}
+            />
           )}
 
           {view === 'history' && (
